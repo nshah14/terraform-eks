@@ -5,7 +5,7 @@ data "aws_vpc" "vpc-gCoK8S" {
 #subnets
 #retrieves a list of all subnets in a VPC with a custom tag of Name set to "gCoK8S"
 data "aws_subnet_ids" "subnet-gCoK8S" {
-  vpc_id = "${data.aws_vpc.selected.vpc_id}"
+  vpc_id = "${data.aws_vpc.vpc-gCoK8S.id}"
 
   tags = {
     Name = "gCo"
