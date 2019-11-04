@@ -4,12 +4,12 @@ resource "aws_eks_cluster" "test" {
 
   vpc_config {
     security_group_ids = [aws_security_group.eks-cluster.id]
-    subnet_ids = module.vpc.public_subnets
+    subnet_ids         =  ["${data.aws_subnet_ids.subnet-gCoK8S.id}"]
   }
 
   depends_on = [
-    aws_iam_role_policy_attachment.demo-cluster-AmazonEKSCl usterPolicy,
-    aws_iam_role_policy_attachment.demo-cluster-AmazonEKSServicePolicy,
+    aws_iam_role_policy_attachment.eks-cluster-AmazonEKSClusterPolicy,
+    aws_iam_role_policy_attachment.eks-cluster-AmazonEKSServicePolicy,
   ]
 }
 

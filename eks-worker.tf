@@ -38,8 +38,8 @@ resource "aws_autoscaling_group" "worker" {
   max_size = 2
   min_size = 1
   name = "terraform-eks-worker"
-  vpc_zone_identifier = module.vpc.public_subnets
-
+  vpc_zone_identifier  = ["${data.aws_subnet.subnet-gCoK8S.id}"]
+  
   tag {
     key = "Name"
     value = "terraform-eks-worker"

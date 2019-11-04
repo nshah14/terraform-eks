@@ -1,11 +1,10 @@
-data "aws_subnet" "cluster-subnet" {
-  id = "${var.subnet_id}"
-}
+
 resource "aws_security_group" "eks-cluster" {
   name        = "terraform-eks-cluster"
   description = "Cluster communication with worker nodes"
   #vpc_id      = var.vpc_id #(need to be replaced by the vpc id from variables)
-  vpc_id = "${data.aws_subnet.cluster-subnet.vpc_id}"
+  #vpc_id = "${data.aws_subnet.cluster-subnet.vpc_id}"
+  vpc_id = "${data.aws_vpc.vpc-gCoK8S.id}"
 
   egress {
     from_port   = 0

@@ -1,13 +1,11 @@
-# workers
-data "aws_subnet" "worker-subnet" {
-  id = "${var.subnet_id}"
-}
+
 
 resource "aws_security_group" "worker-node" {
   name        = "terraform-eks-worker-node"
   description = "Security group for all nodes in the cluster"
   #vpc_id      = var.vpc_id
-  vpc_id="${data.aws_subnet.worker-subnet.vpc_id}"
+  #vpc_id="${data.aws_subnet.worker-subnet.vpc_id}"
+  vpc_id="${data.aws_vpc.subnet-gCoK8S.id}"
 
   egress {
     from_port   = 0
